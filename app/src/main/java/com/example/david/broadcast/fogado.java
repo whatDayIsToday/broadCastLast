@@ -5,27 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-
-
 public class fogado extends BroadcastReceiver {
 
     public static final String Ertesites = "com.example.david.broadcast.Ertesites";
 
-    public fogado(){
-        // üres konstruktor
-    }
-
     @Override
     public void onReceive(Context context, Intent intent) {
+            String segeduzenet = intent.getStringExtra("felado");
+            String leveltargy = intent.getStringExtra("targy");
 
-        String segeduzenet = intent.getStringExtra("felado");
-        mutasd("Ertesitésed érkezett: " +segeduzenet, context);
+            mutasd("E-mailed érkezett:" + segeduzenet +"-től", context);
+            mutasd2("levél tárgya: " + leveltargy,context);
 
     }
 
-    private void mutasd (String felado, Context context){
-        Toast.makeText(context,felado, Toast.LENGTH_LONG).show();
-      //  Toast.makeText(context,targy,Toast.LENGTH_SHORT).show();
+    private void mutasd (String segeduzenet, Context context){
+        Toast.makeText(context,segeduzenet, Toast.LENGTH_LONG).show();
+    }
 
+    private void mutasd2(String leveltargy, Context context) {
+        Toast.makeText(context, leveltargy, Toast.LENGTH_SHORT).show();
     }
 }
